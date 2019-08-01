@@ -1,0 +1,5 @@
+r8125-dkms (9.002.02-1) bionic; urgency=medium
+
+  * Initial release. Driver from realtek.
+
+ -- Bas Vermeulen <bvermeul@blackstar.nl>  Thu, 01 Aug 2019 09:18:49 +0200
