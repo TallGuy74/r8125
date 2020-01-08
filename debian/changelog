@@ -1,3 +1,9 @@
+r8125-dkms (9.003.02-1) bionic; urgency=medium
+
+  * Update to 9.003.02
+
+ -- Bas Vermeulen <bvermeul@blackstar.nl>  Wed, 08 Jan 2020 11:07:10 +0100
+
 r8125-dkms (9.002.02-2) bionic; urgency=medium
 
   * Driver is obsolete for kernel >= 5.4
