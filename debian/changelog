@@ -1,3 +1,9 @@
+r8125-dkms (9.002.02-2) bionic; urgency=medium
+
+  * Driver is obsolete for kernel >= 5.4
+
+ -- Bas Vermeulen <bvermeul@blackstar.nl>  Mon, 07 Oct 2019 14:48:58 +0200
+
 r8125-dkms (9.002.02-1) bionic; urgency=medium
 
   * Initial release. Driver from realtek.
