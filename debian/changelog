@@ -1,3 +1,9 @@
+r8125-dkms (9.003.05-1) bionic; urgency=medium
+
+  * Update to 9.003.05
+
+ -- John Goerzen <jgoerzen@complete.org>  Wed, 16 Sep 2020 21:18:21 -0500
+
 r8125-dkms (9.003.02-1) bionic; urgency=medium
 
   * Update to 9.003.02

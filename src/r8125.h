@@ -4,7 +4,7 @@
 # r8125 is the Linux device driver released for Realtek 2.5Gigabit Ethernet
 # controllers with PCI-Express interface.
 #
-# Copyright(c) 2019 Realtek Semiconductor Corp. All rights reserved.
+# Copyright(c) 2020 Realtek Semiconductor Corp. All rights reserved.
 #
 # This program is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by the Free
@@ -323,12 +323,12 @@ do { \
 #define DASH_SUFFIX ""
 #endif
 
-#define RTL8125_VERSION "9.003.02" NAPI_SUFFIX DASH_SUFFIX
+#define RTL8125_VERSION "9.003.05" NAPI_SUFFIX DASH_SUFFIX
 #define MODULENAME "r8125"
 #define PFX MODULENAME ": "
 
 #define GPL_CLAIM "\
-r8125  Copyright (C) 2019  Realtek NIC software team <nicfae@realtek.com> \n \
+r8125  Copyright (C) 2020  Realtek NIC software team <nicfae@realtek.com> \n \
 This program comes with ABSOLUTELY NO WARRANTY; for details, please see <http://www.gnu.org/licenses/>. \n \
 This is free software, and you are welcome to redistribute it under certain conditions; see <http://www.gnu.org/licenses/>. \n"
 
@@ -346,9 +346,6 @@ This is free software, and you are welcome to redistribute it under certain cond
 
 #define R8125_MSG_DEFAULT \
     (NETIF_MSG_DRV | NETIF_MSG_PROBE | NETIF_MSG_IFUP | NETIF_MSG_IFDOWN)
-
-#define TX_BUFFS_AVAIL(tp) \
-    (tp->dirty_tx + NUM_TX_DESC - tp->cur_tx - 1)
 
 #ifdef CONFIG_R8125_NAPI
 #define rtl8125_rx_hwaccel_skb      vlan_hwaccel_receive_skb
@@ -424,6 +421,8 @@ This is free software, and you are welcome to redistribute it under certain cond
 #define NODE_ADDRESS_SIZE 6
 
 #define SHORT_PACKET_PADDING_BUF_SIZE 256
+
+#define RTK_MAGIC_DEBUG_VALUE 0x0badbeef
 
 /* write/read MMIO register */
 #define RTL_W8(tp, reg, val8)	writeb((val8), tp->mmio_addr + (reg))
@@ -1762,7 +1761,7 @@ enum mcfg {
 #define NIC_RAMCODE_VERSION_CFG_METHOD_2 (0x0b11)
 #define NIC_RAMCODE_VERSION_CFG_METHOD_3 (0x0b33)
 #define NIC_RAMCODE_VERSION_CFG_METHOD_4 (0x0b17)
-#define NIC_RAMCODE_VERSION_CFG_METHOD_5 (0x0b21)
+#define NIC_RAMCODE_VERSION_CFG_METHOD_5 (0x0b34)
 
 //hwoptimize
 #define HW_PATCH_SOC_LAN (BIT_0)
@@ -1803,6 +1802,7 @@ void rtl8125_dash2_enable_rx(struct rtl8125_private *tp);
 void rtl8125_hw_disable_mac_mcu_bps(struct net_device *dev);
 
 #define HW_SUPPORT_CHECK_PHY_DISABLE_MODE(_M)        ((_M)->HwSuppCheckPhyDisableModeVer > 0 )
+#define HW_HAS_WRITE_PHY_MCU_RAM_CODE(_M)        (((_M)->HwHasWrRamCodeToMicroP == TRUE) ? 1 : 0)
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,34)
 #define netdev_mc_count(dev) ((dev)->mc_count)
