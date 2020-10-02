@@ -1,8 +1,11 @@
 Source: r8125-dkms
 Maintainer: Bas Vermeulen <bvermeul@blackstar.nl>
+Section: net
+Priority: optional
 Build-Depends: debhelper (>= 9), dkms
 
 Package: r8125-dkms
 Architecture: all
+Priority: optional
 Depends: ${misc:Depends}
 Description: DKMS source for the RTL8125/Killer Ethernet E3000 network driver
